@@ -1,21 +1,30 @@
-#ifndef HOLBERTON_H
-#define HOLBERTON_H
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef HOLBERTONH
+#define HOLBERTONH
+
 #include <stdarg.h>
-
-typedef struct formats
-{
-	char *sym;
-	int (*f)(va_list);
-} fmts;
-
 int _putchar(char c);
 int _printf(const char *format, ...);
-int charsFormats(const char *format, va_list args);
-int _percent(va_list list);
-int _char(va_list list);
-int _string(va_list list);
-int _integer(va_list list);
+int print_char(va_list c);
+int print_string(va_list s);
+int print_int(va_list i);
+int print_dec(va_list d);
+int print_rev(va_list r);
+int print_bin(va_list b);
+int print_unsig(va_list u);
+int print_octal(va_list o);
+int print_x(va_list x);
+int print_X(va_list X);
+int print_rot13(va_list R);
+/**
+  * struct code_format - Struct format
+  *
+  * @sc: The specifiers
+  * @f: The function associated
+  */
+typedef struct code_format
+{
+	char *sc;
+	int (*f)(va_list);
+} code_f;
 
-#endif
+#endif /* HOLBERTONH */
