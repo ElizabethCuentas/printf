@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 }
 
 /**
- * charsFormats - Paremters printf
+ * charsFormats - paremters printf
  * @format: list of arguments
  * @args: listing
  * Return: value of print
@@ -31,33 +31,33 @@ int _printf(const char *format, ...)
 
 int charsFormats(const char *format, va_list args)
 {
-	int x,y, chars, r_val;
+	int a, b, chars, r_val;
 
-	fmts a_listar[] = {{"c", _char}, {"s", _string},
+	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string},
 				{"%", _percent}, {"d", _integer}, {"i", _integer}, {NULL, NULL}
 	};
 	chars = 0;
-	for (x = 0; format[x] != '\0'; x++)
+	for (a = 0; format[a] != '\0'; a++)
 	{
-		if (format[x] == '%')
+		if (format[a] == '%')
 		{
-			for (y = 0; a_listar[y].sym != NULL; y++)
+			for (b = 0; f_list[b].sym != NULL; b++)
 			{
-				if (format[x + 1] == a_listar[y].sym[0])
+				if (format[a + 1] == f_list[b].sym[0])
 				{
-					r_val = a_listar[y].f(args);
+					r_val = f_list[b].f(args);
 					if (r_val == -1)
 						return (-1);
 					chars += r_val;
 					break;
 				}
 			}
-			if (a_listar[y].sym == NULL && format[x + 1] != ' ')
+			if (f_list[b].sym == NULL && format[a + 1] != ' ')
 			{
-				if (format[x + 1] != '\0')
+				if (format[a + 1] != '\0')
 				{
-					_putchar(format[x]);
-					_putchar(format[x + 1]);
+					_putchar(format[a]);
+					_putchar(format[a + 1]);
 					chars = chars + 2;
 }
 				else
@@ -67,7 +67,7 @@ int charsFormats(const char *format, va_list args)
 		}
 		else
 		{
-			_putchar(format[x]);
+			_putchar(format[a]);
 			chars++;
 		}
 	}
